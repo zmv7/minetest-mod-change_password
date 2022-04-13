@@ -2,6 +2,7 @@ minetest.register_chatcommand("chpw", {
   description = "Change your password",
   privs = {interact=true},
   func = function(name, param)
+    if not minetest.get_player_by_name(name) then return false, "You're not in game" end --msg for irc users
     minetest.show_formspec(name,'password_changer','size[4,4.1]field[0.3,0.5;4,1;oldpwd;Old password:;]field[0.3,1.7;4,1;newpwd1;New Password:;]field[0.3,2.9;4,1;newpwd2;Retype New Password:;]button[1,3.5;2,1;confirm;Confirm]')
 end})
 
